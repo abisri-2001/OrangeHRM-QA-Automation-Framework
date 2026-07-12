@@ -12,6 +12,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class LoginSteps {
 
@@ -24,7 +25,14 @@ public class LoginSteps {
     @Before
     public void setUp() {
 
-        driver = new ChromeDriver();
+    	ChromeOptions options = new ChromeOptions();
+
+    	options.addArguments("--headless=new");
+    	options.addArguments("--window-size=1920,1080");
+    	options.addArguments("--no-sandbox");
+    	options.addArguments("--disable-dev-shm-usage");
+
+    	driver = new ChromeDriver(options);
 
         driver.manage().window().maximize();
 

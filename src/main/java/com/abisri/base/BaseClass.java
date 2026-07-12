@@ -19,12 +19,14 @@ public class BaseClass {
     @BeforeMethod
     public void setUp() {
 
-        ChromeOptions options = new ChromeOptions();
+    	ChromeOptions options = new ChromeOptions();
 
-        options.addArguments("--headless=new");
-        options.addArguments("--window-size=1920,1080");
+    	options.addArguments("--headless=new");
+    	options.addArguments("--window-size=1920,1080");
+    	options.addArguments("--no-sandbox");
+    	options.addArguments("--disable-dev-shm-usage");
 
-        driver = new ChromeDriver(options);
+    	driver = new ChromeDriver(options);
 
         driver.get("https://opensource-demo.orangehrmlive.com/");
     }

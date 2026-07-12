@@ -38,16 +38,21 @@ public class TestListener implements ITestListener {
                 "Test Failed: " + result.getName()
         );
 
-        BaseClass base =
-                (BaseClass) result.getInstance();
+        Object testInstance = result.getInstance();
 
-        try {
+        if (testInstance instanceof BaseClass) {
 
-            base.captureScreenshot(result.getName());
+            BaseClass base =
+                    (BaseClass) testInstance;
 
-        } catch (Exception e) {
+            try {
 
-            e.printStackTrace();
+                base.captureScreenshot(result.getName());
+
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
         }
     }
 
